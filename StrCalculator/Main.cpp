@@ -1,5 +1,6 @@
 #include "Parser.h"
 #include <iostream>
+#include "stdutil.h"
 using namespace std;
 
 int interpret(string code) {
@@ -13,12 +14,12 @@ int interpret(string code) {
 void testAll();
 
 int main() {
-    testAll();
-
+   /* testAll();*/
+    cout << "Enter expressions in one string:" << endl;
     string code;
     getline(cin, code);
     try {
-        cout << interpret(code);
+        cout << "Result = " << interpret(code);
     } catch (SyntaxError e) {
         cout << "Syntax error: " << e.what();
     } catch (RuntimeError e) {
@@ -27,8 +28,7 @@ int main() {
     catch (exception e)  {
         cout << "INTERNAL ERROR: " << e.what();
     }
-    cin.sync();
-    cin.get();
+    pause();
     return 0;
 }
 
